@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.security.SecureClassLoader;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -222,7 +223,7 @@ public class SlingScriptEngineManagerTest {
     }
 
     private File createFactoryFile() throws IOException {
-        File tempFile = File.createTempFile("scriptEngine", "tmp");
+        File tempFile = Files.createTempFile("scriptEngine", "tmp").toFile();
         tempFile.deleteOnExit();
         try (FileOutputStream fos = new FileOutputStream(tempFile)) {
             fos.write("#I'm a test-comment\n".getBytes());
